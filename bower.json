@@ -1,0 +1,20 @@
+{
+  "name": "aria-csv-gen",
+  "authors": [
+    "austin turner <paustint@gmail.com>"
+  ],
+  "description": "Aria csv generator for data loaders",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
