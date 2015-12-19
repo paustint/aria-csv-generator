@@ -31,8 +31,7 @@ module.exports.getPlans = function(req, res) {
 		res.json({
 			error: 'Client number must be provided'
 		});
-	}
-		
+	}	
 };
 
 module.exports.getUsageTypes = function(req, res) {

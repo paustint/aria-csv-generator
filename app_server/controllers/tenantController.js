@@ -9,7 +9,6 @@ module.exports.getTenants = function(req, res) {
 				errorName: err.name
 			});
 		} else {
-			console.log(tenants);
 			res.json(tenants)
 		}
 	});
@@ -24,7 +23,6 @@ module.exports.getTenantByClientNo = function(req, res) {
 				errorName: err.name
 			});
 		} else {
-			console.log(tenant);
 			res.json(tenant)
 		}
 	});
@@ -39,7 +37,6 @@ module.exports.getTenantById = function(req, res) {
 				errorName: err.name
 			});
 		} else {
-			console.log(tenant);
 			res.json(tenant)
 		}
 	});
@@ -54,6 +51,7 @@ module.exports.createTenant = function(req, res) {
 	
 	tenant.save(function(err) {
 		if (err) {
+			console.log(err);
 			res.json({
 				error: "Tenant could not be saved",
 				errorMessage: err.message,
@@ -68,8 +66,10 @@ module.exports.createTenant = function(req, res) {
 };
 
 module.exports.updateTenant = function(req, res) {
+	console.log(req.body);
 	Tenant.findByIdAndUpdate(req.params.id, req.body.tenant, function(err, tenant) {
 		if (err) {
+			console.log(err);
 			res.json({
 				error: "Tenant could not be updated",
 				errorMessage: err.message,
@@ -84,6 +84,7 @@ module.exports.updateTenant = function(req, res) {
 module.exports.deleteTenant = function(req, res) {
 	Tenant.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {
+			console.log(err);
 			res.json({
 				error: "Tenant could not be deleted",
 				errorMessage: err.message,

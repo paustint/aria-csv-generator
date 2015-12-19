@@ -1,0 +1,48 @@
+<md-toolbar layout="row" >
+	<h1 class="md-toolbar-tools">Tenants</h1>
+</md-toolbar>
+
+<div flex layout="row">
+	<md-sidenav flex="40" md-is-locked-open="true" class="md-whiteframe-z2">
+		<md-list>
+			<md-subheader class="md-no-sticky">Existing Tenants</md-subheader>
+			 <md-list-item ng-repeat="tenant in tenants" ng-click="editTenant(tenant)" class="secondary-button-padding">
+				 <md-checkbox ng-checked="tenant === selectedTenant" disabled></md-checkbox>
+				 <p>{{ tenant.name }} ( {{ tenant.clientNo }} )</p>
+				 
+				<md-button class="md-warn md-raised" ng-click="showConfirmDelete(tenant, $event)">Delete</md-button>
+				</md-list-item>
+		</md-list>
+	</md-sidenav>
+	
+	<md-content flex id="content" class="md-whiteframe-z2">
+		<md-subheader class="md-no-sticky">Add / Modify Tenant</md-subheader>
+			<form name="tenantForm">
+				<div layout-gt-xs="row">
+				<md-input-container flex>
+					<label>Tenant Name</label>
+					<input ng-model="tenant.name" name="tenantName" type="text" ng-required="true"/>
+					<p ng-message="required" ng-show="tenantForm.tenantName.$error.required" class="help-block">Tenant name is required.</p>
+				</md-input-container>
+				</div>
+				<div layout-gt-sm="row">
+				<md-input-container flex>
+					<label>Client Number</label>
+					<input ng-model="tenant.clientNo" name="clientNo" type="text" ng-pattern="/^[0-9]*$/" ng-required="true" />
+					<p  ng-message="required" ng-show="tenantForm.clientNo.$error.pattern" class="help-block">Client number must be numberic.</p>
+					<p  ng-message="required" ng-show="tenantForm.tenantName.$error.required" class="help-block">Client number is required.</p>
+				</md-input-container>
+				<md-input-container flex="80">
+					<label>Auth Key</label>
+					<input ng-model="tenant.authKey" name="authKey" type="text" ng-required="true"/>
+					<p  ng-message="required" ng-show="tenantForm.authKey.$error.required" class="help-block">Authorization key is required.</p>
+				</md-input-container>
+			</div>
+			<div layout-gt-sm="row">
+				<md-button class="md-raised md-primary" ng-disabled="tenantForm.$invalid" ng-click="saveTenant(tenant)" >Save Tenant</md-button>
+				<md-button class="md-raised" ng-click="clearTenantText(tenant)">Clear Text</md-button>
+			</div>
+			</form>
+
+	</md-content>
+</div>

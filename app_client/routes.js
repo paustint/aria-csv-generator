@@ -2,22 +2,26 @@
 
 // ROUTES
 app.config(function ($routeProvider) {
-	
 	$routeProvider
 	
 	.when('/', {
-		templateUrl: '/csv_generator/apiList.view.html',
+		templateUrl: '/csv_generator/api_list/apiList.view.html',
 		controller: 'ApiListController'
 	})
 	
 	.when('/api-list', {
-		templateUrl: '/csv_generator/_api-list.html',
-		controller: 'apiList'
+		templateUrl: '/csv_generator/api_list/apiList.view.html',
+		controller: 'ApiListController'
 	})
 	
-	.when('/api-list/:api', {
-		templateUrl: '/assets/angular/tenants/_tenants.html',
+	.when('/tenant', {
+		templateUrl: '/tenant/tenant.view.html',
 		controller: 'TenantController'
+	})
+	
+	.when('/csv-gen/record_usage', {
+		templateUrl: '/csv_generator/record_usage/recordUsage.view.html',
+		controller: 'RecordUsageController'
 	})
 	
 	.otherwise({redirectTo: '/'});
