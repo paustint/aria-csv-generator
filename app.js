@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var db = require('./app_server/models/db');
 
-var routesApi = require('./app_server/routes/routesApi');
+var routes = require('./app_server/routes/routes');
 // var users = require('./app_server/routes/users');
 
 var app = express();
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/api', routesApi);
+app.use('/api', routes);
 // app.use('/users', users);
 
 app.use(function(req, res) {

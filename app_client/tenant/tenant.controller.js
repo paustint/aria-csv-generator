@@ -1,6 +1,8 @@
 'use strict';
 
-app.controller('TenantController', ['$scope', '$log', '$mdDialog', 'TenantService', function($scope, $log, $mdDialog, TenantService) {
+app.controller('TenantController', ['$scope', '$log', '$mdDialog', 'TenantService', 'Page', function($scope, $log, $mdDialog, TenantService, Page) {
+	
+	Page.setTitle('Tenants');
 	
 	$scope.tenants = TenantService.tenants;
 	

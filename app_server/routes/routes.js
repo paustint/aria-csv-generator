@@ -45,6 +45,8 @@ router.get('/plans/:planNo/usageTypes', ariaController.getUsageTypes);
 /* GET plans for an account from an Aria tenant */
 router.get('/account/:acctNo/plans', ariaController.getAcctPlans);
 
+router.get('/account/:acctNo/plans/usageTypes', ariaController.getAcctPlanUsageTypes);
+
 /* GET accounts from an Aria tenant */
 router.get('/accounts', ariaController.getAccounts);
 

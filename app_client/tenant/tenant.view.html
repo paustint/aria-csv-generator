@@ -6,9 +6,12 @@
 	<md-sidenav flex="40" md-is-locked-open="true" class="md-whiteframe-z2">
 		<md-list>
 			<md-subheader class="md-no-sticky">Existing Tenants</md-subheader>
-			 <md-list-item ng-repeat="tenant in tenants" ng-click="editTenant(tenant)" class="secondary-button-padding">
+			 <md-list-item ng-repeat="tenant in tenants" ng-click="editTenant(tenant)" class="secondary-button-padding md-2-line"">
 				 <md-checkbox ng-checked="tenant === selectedTenant" disabled></md-checkbox>
-				 <p>{{ tenant.name }} ( {{ tenant.clientNo }} )</p>
+				 <div class="md-list-item-text">
+					 <p>{{ tenant.name }}</p>
+					 <p>({{ tenant.clientNo }})</p>
+				 </div>
 				 
 				<md-button class="md-warn md-raised" ng-click="showConfirmDelete(tenant, $event)">Delete</md-button>
 				</md-list-item>

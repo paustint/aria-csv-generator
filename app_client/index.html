@@ -1,12 +1,45 @@
 <!DOCTYPE html>
-<html ng-app="app.csvGenerator">
+<html ng-app="app.csvGenerator" ng-controller="TitleController">
   <head>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" charset="utf-8">
+    <title>{{ Page.title() }}</title>
     <link rel="stylesheet" href="/angular-material/angular-material.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <base href="/">
   </head>
-  <body ng-view>
+  <body>
+    <div>
+      <md-toolbar class="md-menu-toolbar md-hue-2">
+        <div layout="row">
+          <h4 class="md-toolbar-tools">CSV Generator</h4>
+          <span class="flex"></span>
+            <md-button aria-label="Tenants" ng-click="navigate('/tenant')" 
+                       ng-class="{'md-raised md-primary': path('/tenant')}">
+              Tenants
+            </md-button>
+            <md-menu-bar>
+              <md-menu>
+                <button ng-click="$mdOpenMenu($event)" aria-label="CSV Generator" class="md-button">
+                  CSV Generator
+                </button>
+                <md-menu-content>
+                  <md-menu-item>
+                      <md-button aria-label="Record Usage" ng-click="navigate('/csv-gen/record_usage')"
+                                 ng-class="{'md-raised md-primary': path('/csv-gen/record_usage')}">
+                        Record Usage
+                      </md-button>
+                  </md-menu-item>
+                  <md-menu-divider></md-menu-divider>
+                  <md-menu-item>
+                    <md-button>and stuff</md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+            </md-menu-bar>
+        </div>
+      </md-toolbar>
+    </div>
+    <div ng-view></div>
     <script src="/angular/angular.js"></script>
     <script src="/angular-aria/angular-aria.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
@@ -15,15 +48,12 @@
     <script src="/angular-route/angular-route.js"></script>
     <script src="/app.js"></script>
     <script src="/routes.js"></script>
+    <script src="/title_controller/title.controller.js"></script>
     <script src="/csv_generator/api_list/apiList.controller.js"></script>
     <script src="/csv_generator/api_list/apiList.service.js"></script>
     <script src="/csv_generator/record_usage/recordUsage.controller.js"></script>
     <script src="/csv_generator/record_usage/recordUsage.service.js"></script>
     <script src="/tenant/tenant.controller.js"></script>
     <script src="/tenant/tenant.service.js"></script>
-    
-
-    
-    
   </body>
 </html>

@@ -11,9 +11,17 @@ var app = angular.module('app.csvGenerator', [
   'ngMaterial',
   'app.services',
   // 'ui.bootstrap'
-])
+]);
 
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider
-//   .otherwise({redirectTo: '/'});
-// }]);
+app.factory('Page', function(){
+  var title = 'default';
+  return {
+    title: function() { return title; },
+    setTitle: function(newTitle) { title = newTitle; }
+  };
+});
+
+app.config(['$compileProvider',
+    function ($compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+}]);
