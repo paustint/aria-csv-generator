@@ -3,7 +3,7 @@ db:
   command: "mongod --smallfiles --logpath=/dev/null"
 web:
   build: .
-  command: ./bin/www
+  command: node ./bin/www
   volumes:
     - .:/myapp
   ports:
