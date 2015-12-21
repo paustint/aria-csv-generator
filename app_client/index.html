@@ -9,34 +9,19 @@
   </head>
   <body>
     <div>
-      <md-toolbar class="md-menu-toolbar md-hue-2">
-        <div layout="row">
-          <h4 class="md-toolbar-tools">CSV Generator</h4>
-          <span class="flex"></span>
-            <md-button aria-label="Tenants" ng-click="navigate('/tenant')" 
-                       ng-class="{'md-raised md-primary': path('/tenant')}">
-              Tenants
+      <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          <h4>CSV Generator</h4>
+          
+            <md-button aria-label="Tenants" 
+                       ng-click="navigate('/tenant')" 
+                       ng-class="{'md-raised md-primary': path('/tenant')}">Tenants
             </md-button>
-            <md-menu-bar>
-              <md-menu>
-                <button ng-click="$mdOpenMenu($event)" aria-label="CSV Generator" class="md-button">
-                  CSV Generator
-                </button>
-                <md-menu-content>
-                  <md-menu-item>
-                      <md-button aria-label="Record Usage" ng-click="navigate('/csv-gen/record_usage')"
-                                 ng-class="{'md-raised md-primary': path('/csv-gen/record_usage')}">
-                        Record Usage
-                      </md-button>
-                  </md-menu-item>
-                  <md-menu-divider></md-menu-divider>
-                  <md-menu-item>
-                    <md-button>and stuff</md-button>
-                  </md-menu-item>
-                </md-menu-content>
-              </md-menu>
-            </md-menu-bar>
-        </div>
+            <md-button aria-label="Record Usage" 
+                       ng-click="navigate('/csv-gen/record_usage')"
+                       ng-class="{'md-raised md-primary': path('/csv-gen/record_usage')}">Record Usage
+            </md-button>
+            </div>
       </md-toolbar>
     </div>
     <div ng-view></div>

@@ -1,7 +1,9 @@
 'use strict';
 
-app.controller('RecordUsageController', ['$scope', '$log', '$mdToast', '$mdDialog', 'TenantService', 'RecordUsageService', 
-							function($scope, $log, $mdToast, $mdDialog, TenantService, RecordUsageService) {
+app.controller('RecordUsageController', ['$scope', '$log', '$mdToast', '$mdDialog', 'TenantService', 'RecordUsageService', 'Page',
+							function($scope, $log, $mdToast, $mdDialog, TenantService, RecordUsageService, Page) {
+	
+	Page.setTitle('Record Usage');
 	
 	$scope.tenants = null;
 	$scope.tenant = null;
