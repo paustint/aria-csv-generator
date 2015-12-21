@@ -73,7 +73,7 @@ app.controller('RecordUsageController', ['$scope', '$log', '$mdToast', '$mdDialo
 					$scope.plans = plans.plans_basic;
 				}, function(err) {
 					$log.error(err);
-					$scope.showToast(err.error + ' - ' + err.errorMessage);
+					$scope.showToast(err.error + err.errorMessage);
 				});
 			});	
 		}
@@ -95,11 +95,21 @@ app.controller('RecordUsageController', ['$scope', '$log', '$mdToast', '$mdDialo
 		$scope.showUsageTypes = true;
 		$scope.usagetypeLoading = true;
 		RecordUsageService.getAcctPlansAndUsageTypes(tenantId, acctNo, function(usageTypes){
-			$scope.usageTypeOptions.accountNumbers.push(acctNo);
-			$scope.usageTypes = usageTypes;
-			$scope.usagetypeLoading = false;
+			RecordUsageService.checkApiError(usageTypes, function() {
+					$scope.usageTypeOptions.accountNumbers.push(acctNo);
+					$scope.usageTypes = usageTypes;
+					$scope.usagetypeLoading = false;
+				}, function(err) {
+					$log.error(err);
+					$scope.showToast(err.error + (err.errorMessage || ''));
+					$scope.showUsageTypes = false;
+					$scope.usagetypeLoading = false;
+				});
 		}, function(err){
-			
+			$log.error(err);
+			$scope.showToast(err.error + ' - ' + err.errorMessage);
+			$scope.showUsageTypes = false;
+			$scope.usagetypeLoading = false;
 		});
 	};
 	

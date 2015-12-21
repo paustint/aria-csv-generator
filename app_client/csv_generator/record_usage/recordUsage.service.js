@@ -56,6 +56,7 @@ app.service('RecordUsageService', ['$http', '$log', '$filter', '$q', function($h
 
 	
 	this.checkApiError = function(data, successCb, errorCb) {
+		var data = data || { error_code: -1};
 		if (data.error_code === 0) {
 			successCb();
 		} else {

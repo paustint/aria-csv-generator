@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/aria-csv-gen-dev';
+// 'DB_1_PORT_27017_TCP_ADDR'
+var DB_HOST = process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost';
+var dbURI = 'mongodb://' + DB_HOST + '/aria-csv-gen-dev';
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
