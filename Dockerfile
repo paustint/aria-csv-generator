@@ -6,5 +6,6 @@ ADD package.json /myapp/package.json
 ADD bower.json /myapp/bower.json
 RUN npm install
 RUN npm install -g bower
-RUN bower install --config.interactive=false --allow-root
+RUN echo '{ "allow_root": true }' > /root/.bowerrc
+RUN bower install
 ADD . /myapp
